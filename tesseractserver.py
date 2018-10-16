@@ -65,10 +65,10 @@ class FileUploadHandler(tornado.web.RequestHandler):
         # remove tmp image file
         self.cleanup(tmpFilePath)
 
-        if "." not in result and " " in result:
-            result = result.replace(" ", ".")
-        else:
-            result = result.replace(" ", "")
+        # if "." not in result and " " in result:
+        #     result = result.replace(" ", ".")
+        # else:
+        #     result = result.replace(" ", "")
 
         # send response json
         response = { 'result': result }
