@@ -80,7 +80,7 @@ class TesseactWrapper:
         result_text = ctypes.string_at(text_out)
         print 'Result: ', result_text
 
-        return result_text.replace("\n", "")
+        return result_text
 
     def imageUrlToString(self, url, minWidth):
 
@@ -126,7 +126,7 @@ class TesseactWrapper:
         result_text = ctypes.string_at(text_out)
         print 'Result: ', result_text
   
-        return result_text.replace("\n", "")
+        return result_text
 
 def main():
     parser = optparse.OptionParser()

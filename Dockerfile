@@ -27,25 +27,27 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir ~/temp \
   && cd ~/temp/ \
-  && wget http://www.leptonica.org/source/leptonica-1.69.tar.gz \
-  && tar -zxvf leptonica-1.69.tar.gz \
+  && wget https://github.com/DanBloomberg/leptonica/archive/v1.69.tar.gz \
+  && tar -zxvf v1.69.tar.gz \
   && cd leptonica-1.69 \
+  && chmod u+x configure \
   && ./configure \
   && make \
   && checkinstall \
   && ldconfig
 
 RUN cd ~/temp/ \
-  && wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz \
-  && tar xvf tesseract-ocr-3.02.02.tar.gz \
-  && cd tesseract-ocr \
+  && wget https://github.com/tesseract-ocr/tesseract/archive/3.02.02.tar.gz \
+  && tar xvf 3.02.02.tar.gz \
+  && cd tesseract-3.02.02 \
   && ./autogen.sh \
   && mkdir ~/local \
+  && chmod u+x configure \
   && ./configure --prefix=$HOME/local/ \
   && make \
   && make install \
   && cd ~/local/share \
-  && wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz \
+  && wget https://downloads.sourceforge.net/project/tesseract-ocr-alt/tesseract-ocr-3.02.eng.tar.gz \
   && tar xvf tesseract-ocr-3.02.eng.tar.gz
 
 ENV TESSDATA_PREFIX /root/local/share/tesseract-ocr

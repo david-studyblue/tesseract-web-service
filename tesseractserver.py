@@ -123,10 +123,10 @@ class ImageUrlHandler(tornado.web.RequestHandler):
         # do OCR, get result string
         global wrapper
         result = wrapper.imageUrlToString(url, minWidth)
-        if "." not in result and " " in result:
-            result = result.replace(" ", ".")
-        else:
-            result = result.replace(" ", "")
+        # if "." not in result and " " in result:
+        #     result = result.replace(" ", ".")
+        # else:
+        #     result = result.replace(" ", "")
 
         # send response json
         response = { 'result': result, 'url': url }
